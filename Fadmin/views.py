@@ -12,12 +12,12 @@ def generate_password(length=8):
     return "".join(random.choices(string.ascii_letters + string.digits, k=length))
 
 # Admin Dashboard View
-@login_required
+
 def admin_dashboard(request):
     return render(request, "admin_dashboard.html")
 
 # Add Student View
-@login_required
+
 def add_student(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -38,4 +38,4 @@ def add_student(request):
 
         return redirect("admin_dashboard")
 
-    return render(request, "add_student.html")
+    return render(request, "add_student1.html")
