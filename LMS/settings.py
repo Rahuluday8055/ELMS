@@ -61,6 +61,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'LMS.urls'
+LOGIN_URL = "/fadmin/login/"
+AUTH_USER_MODEL = 'users.CustomUser'
+
 
 TEMPLATES = [
     {
@@ -146,3 +149,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "educaddrahul@gmail.com"
 EMAIL_HOST_PASSWORD = "sqrg dniz smsq ltyq"  # Use environment variables in production!
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication
+]
+
+

@@ -23,3 +23,4 @@ urlpatterns = [
     path("Fadmin/", include("Fadmin.urls")),
 
 ]
+

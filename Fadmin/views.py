@@ -6,6 +6,33 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import random, string
 from users.models import CustomUser
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+# admin login In view
+def admin_login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        print(f"Trying to authenticate: {email} with password: {password}")
+
+
+        user = authenticate(request, username=email, password=password)  # Use email as username
+
+        if user is not None:
+            login(request, user)
+            return redirect('admin_dashboard')  # Change 'dashboard' to your desired page
+        else:
+            messages.error(request, "Invalid email or password")
+
+    return render(request, 'admin_login1.html')
+
+# admin logout view
+@login_required
+def admin_dashboard(request):
+    return render(request, "admin_dashboard.html")
+
 
 # Function to generate a random password
 def generate_password(length=8):
